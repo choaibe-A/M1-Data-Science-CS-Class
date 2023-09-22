@@ -19,13 +19,13 @@ jobs:
     - name: Compile LaTeX
       run: |
         xelatex -interaction=nonstopmode card.tex
-      working-directory: .  # Use the working directory where main.tex is located
+      working-directory: ./M1-Data-Science-CS-Class  # Use the working directory where main.tex is located
 
     - name: Create Release
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          main.pdf  # Replace with the actual name of your PDF file
+          card.pdf  # Replace with the actual name of your PDF file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
