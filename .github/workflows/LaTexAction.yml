@@ -18,7 +18,7 @@ jobs:
 
     - name: Compile LaTeX
       run: |
-        xelatex -interaction=nonstopmode main.tex
+        xelatex -interaction=nonstopmode card.tex
       working-directory: .  # Use the working directory where main.tex is located
 
     - name: Create Release
