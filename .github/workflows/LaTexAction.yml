@@ -19,7 +19,7 @@ jobs:
     - name: Compile LaTeX
       run: |
         xelatex -interaction=nonstopmode card.tex
-      working-directory: ./M1-Data-Science-CS-Class  # Use the working directory where main.tex is located
+      working-directory: M1-Data-Science-CS-Class  # Use the working directory where main.tex is located
 
     - name: Create Release
       id: create_release
