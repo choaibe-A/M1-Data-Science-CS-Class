@@ -17,4 +17,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: card.pdf
-          token: ${{ secrets.MYFIRSTATP }}
+          token: ${{ secrets.FINE_GRAINED_TOKEN }}
