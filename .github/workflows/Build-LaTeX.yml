@@ -23,7 +23,6 @@ jobs:
       - name: Compile LaTeX document
         run: |
           xelatex -interaction=nonstopmode -halt-on-error card.tex
-          bibtex card   # If you need BibTeX
           xelatex -interaction=nonstopmode -halt-on-error card.tex
           xelatex -interaction=nonstopmode -halt-on-error card.tex
 
