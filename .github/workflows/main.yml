@@ -17,3 +17,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: card.pdf
+          token: ${{ secrets.PAT_TOKEN }}
