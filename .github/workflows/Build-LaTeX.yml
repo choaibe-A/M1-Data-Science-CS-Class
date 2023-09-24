@@ -1,7 +1,5 @@
 name: Build LaTeX document
-on:
-  push:
-    tags: '*'
+on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -15,8 +13,11 @@ jobs:
           sudo apt-get install -y texlive-xetex
 
       - name: Compile LaTeX document
-        run: xelatex card.tex
-
+        uses: xu-cheng/latex-action@v3
+          with:
+            root_file: main.tex
+            latexmk_use_xelatex: true
+            extra_fonts: M1-Data-Science-CS-Class/GillSans/*.otf
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
