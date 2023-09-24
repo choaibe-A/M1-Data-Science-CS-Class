@@ -1,31 +1,21 @@
-name: LaTeX Build
-
-on:
+name: Build LaTeX document
+on: 
   push:
     tags: '*'
-
 jobs:
-  build:
+  build_latex:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up LaTeX and required packages
-      uses: docker://blang/latex:ctanfull
-      with:
-        args: >
-          bash -c "
-          apt-get update && apt-get install -y fonts-<Gill Sans> && apt-get clean
-          "
-
-    - name: Compile LaTeX document
-      run: |
-        xelatex -interaction=nonstopmode -halt-on-error card.tex
-
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: card-output
-        path: card.pdf
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: card.tex
+          latexmk_use_xelatex: true
+          extra_fonts: ./GillSans/*.otf
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: card.pdf
